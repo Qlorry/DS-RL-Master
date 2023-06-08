@@ -79,4 +79,5 @@ To run image:
 <img width="1080" alt="image" src="https://github.com/Qlorry/DS-RL-Master/assets/62158298/2c63b6b7-9859-4c10-b567-c0a42931d3b0">
 
 Це реалізовується за допомогою інстансу класу MasterDomain, котрий викликає функцію domain_log під час виконання функції add_message:
+
 <img width="491" alt="image" src="https://github.com/Qlorry/DS-RL-Master/assets/62158298/171d7f90-9b17-4da0-8413-301e9f04d297">
