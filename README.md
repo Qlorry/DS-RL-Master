@@ -27,11 +27,11 @@ To run image:
 > - To test the total order, you can generate some random internal server error response from the secondaries
 
 
-Self-check acceptance test:
-Start M + S1
-send (Msg1, W=1) - Ok
-send (Msg2, W=2) - Ok
-send (Msg3, W=3) - Wait
-send (Msg4, W=1) - Ok
-Start S2
-Check messages on S2 - [Msg1, Msg2, Msg3, Msg4]
+Self-check acceptance test: <br />
+Start M + S1 <br />
+send (Msg1, W=1) - Ok <br />
+send (Msg2, W=2) - Ok <br />
+send (Msg3, W=3) - Wait <br />
+send (Msg4, W=1) - Ok <br />
+Start S2 <br />
+Check messages on S2 - [Msg1, Msg2, Msg3, Msg4] <br />
