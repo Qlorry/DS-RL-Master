@@ -42,7 +42,7 @@ services:
       - 20002:20000
     networks:
       - services_network
-    command: -m master:30000 -fail_every_2_msg true
+    command: -m master:30000 --fail_every_2_msg true
     depends_on:
       - master
 
