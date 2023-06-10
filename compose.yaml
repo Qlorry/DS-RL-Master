@@ -18,23 +18,23 @@ services:
     depends_on:
       - master
       
-  secondary-2:
-    image: secondary-service
-    networks:
-      - services_network
-    command: -m master:30000
-    depends_on:
-      - master
+  # secondary-2:
+  #   image: secondary-service
+  #   networks:
+  #     - services_network
+  #   command: -m master:30000
+  #   depends_on:
+  #     - master
 
-  laggy-secondary:
-    image: secondary-service
-    ports:
-      - 20001:20000
-    networks:
-      - services_network
-    command: -m master:30000 -l 10
-    depends_on:
-      - master
+  # laggy-secondary:
+  #   image: secondary-service
+  #   ports:
+  #     - 20001:20000
+  #   networks:
+  #     - services_network
+  #   command: -m master:30000 -l 10
+  #   depends_on:
+  #     - master
 
   faulty-secondary:
     image: secondary-service

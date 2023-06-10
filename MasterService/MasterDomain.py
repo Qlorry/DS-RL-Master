@@ -72,7 +72,7 @@ class MasterDomain(metaclass=MasterDomainMeta):
 
     async def ping(self):
         delete_list = [] 
-        domain_log("checking" + str(self.addr_helper.GetChannels()))
+        # domain_log("checking" + str(self.addr_helper.GetChannels()))
         for ch in self.addr_helper.GetChannels():
             try:
                 result = requests.get("http://"+ ch + "/ping")
@@ -148,7 +148,15 @@ class MasterDomain(metaclass=MasterDomainMeta):
     def get_messages(self):
         domain_log("Getting messages")
         with (yield self.messages_mtx.acquire()):
-            return dict(sorted(self.messages.items()))
+            sorted_messages = dict(sorted(self.messages.items()))
+            total_order_messages = dict()
+            prev = 0
+            for m in sorted_messages:
+                if m - prev > 1:
+                    break
+                prev = m
+                total_order_messages[m] = sorted_messages[m]
+            return total_order_messages
     
     @coroutine
     def add_client(self, client_address):
