@@ -148,7 +148,10 @@ class MasterDomain(metaclass=MasterDomainMeta):
     def get_messages(self):
         domain_log("Getting messages")
         with (yield self.messages_mtx.acquire()):
-            return self.messages
+            return dict(sorted(self.messages.items()))
     
+    @coroutine
     def add_client(self, client_address):
         self.addr_helper.add(client_address)
+        with (yield self.messages_mtx.acquire()):
+            return self.messages

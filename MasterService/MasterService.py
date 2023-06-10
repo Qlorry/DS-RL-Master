@@ -26,15 +26,16 @@ class AddMessageHandler(tornado.web.RequestHandler):
             self.write("Error: " + str(e))
 
 class RegisterHandler(tornado.web.RequestHandler):
+    @coroutine
     def post(self):
         try:
             data = json.loads(self.request.body)
             service_log("POST request! With new message: " + data["ip"]+":"+data["port"])
             domain = MasterDomain()
 
-            domain.add_client(data["ip"]+":"+data["port"])
+            messages = yield domain.add_client(data["ip"]+":"+data["port"])
             self.set_status(200)
-            self.write("")
+            self.write(json.dumps(messages))
         except Exception as e:
             self.set_status(500)
             self.write("Error: " + str(e))
